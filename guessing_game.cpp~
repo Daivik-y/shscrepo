@@ -1,0 +1,10 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  int randomNum = rand() % 101;
+  cout << randomNum;
+  return 0;
+}

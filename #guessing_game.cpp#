@@ -1,0 +1,14 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  int randomNum = rand() % 101;
+  cout << randomNum <<endl;
+  int userguess;
+  cout << "Enter your guess: ";
+  cin >> userguess;
+  cout << "your guess: " << userguess << endl;
+  return 0;
+}
