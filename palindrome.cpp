@@ -14,12 +14,18 @@ int main()
   
   cout << str << endl;
 
-  int size = sizeof(str);
+  int size = strlen(str);
+
+  int j = 0;
 
   for (int i = size - 1; i >= 0; i--){
-    //str2.append(str[i])
-    cout << str2 << endl;
+    str2[j] = str[i];
+    j++;
   }
+
+  str2[j] = '\0';
+
+  cout << str2 << endl;
   
   
   return 0;
