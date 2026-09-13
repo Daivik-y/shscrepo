@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <cctype>
 #include <algorithm>
 using namespace std;
 
@@ -13,45 +14,44 @@ int main()
   
 
   
-  cout << str0 << endl;
+  //cout << str0 << endl;
 
      int size = strlen(str0);
 
      int count = 0;
      
   for (int i = 0; i <= size-1; i++){
-    if (ispunct(str0[i])) {
-      i = i - 1;	
+    if (isalnum(str0[i])) {
+      str[count] = tolower(str0[i]);
+      count++;
     }
 
-    else{
-      str[i] = str0[i];
-    }
+  
     
-    count++;
+    
   }
   
-  str[count+1] = '\0';
+  str[count] = '\0';
 
-  cout << "fixedstr" << str << endl;  
+  //cout << "fixedstr" << str << endl;  
       
      
   int j = 0;
 
-  for (int i = size - 1; i >= 0; i--){
+  for (int i = count - 1; i >= 0; i--){
     str2[j] = str[i];
     j++;
   }
 
   str2[j] = '\0';
 
-  cout << str2 << endl;
+  //cout << str2 << endl;
   int cmp = strcmp(str, str2);
 
   if (cmp == 0) {
-    cout << str << " is a palindrome" << endl;
+    cout << "Palindrome" << endl;
   } else {
-    cout << str << " is not a palindrome" << endl;
+    cout << "Not a Palindrome" << endl;
   }
   
   
