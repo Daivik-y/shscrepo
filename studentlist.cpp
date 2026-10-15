@@ -24,24 +24,45 @@ void addStudent(vector<Student*>& list){
     cin >> s->gpa;
 
     list.push_back(s); //appends to the vector
-
-  
 }
+   void printStudent(vector<Student*>& list){
+    for(Student* person : list) {
+    cout << person->firstname << ", " << person->studentid << ", " << person->gpa << "\n";
+     }
+    }
+
 
 int main() {
     vector<Student*> list1;
     char command[20];
-
+    char command1[20];
+    
     while (true) {
         cout << "Enter command : ";
         cin >> command;
 
         if (strcmp(command, "ADD") == 0) {
             addStudent(list1);
-	    break;
+	    // addStudent(list1);
+	}
 
-        } 
+	cout << "Enter command: ";
+	cin >> command1;
+	
+	if(strcmp(command1, "PRINT") == 0) {
+	  printStudent(list1);
+	}
+
+	
+
+	
+
+	//	for(Student* person :  list1) {
+	//	  cout << person->firstname << ", " << person->studentid << ", " << person->gpa << "\n";
+             
+	break;
     }
-
+    
+	   
     return 0;
 }
