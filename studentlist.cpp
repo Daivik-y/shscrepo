@@ -26,41 +26,53 @@ void addStudent(vector<Student*>& list){
     list.push_back(s); //appends to the vector
 }
    void printStudent(vector<Student*>& list){
-    for(Student* person : list) {
+     for(Student* person : list ) {
     cout << person->firstname << ", " << person->studentid << ", " << person->gpa << "\n";
      }
     }
 
 
+void deleteStudent(vector<Student*>& list) {
+    double id;
+    cout << "Enter student id to delete: ";
+    cin >> id;
+
+    for (int i = 0; i < list.size(); i++) {
+        if (list[i]->studentid == id) {
+            delete list[i];    
+
+      }
+    }
+}
+
 int main() {
     vector<Student*> list1;
     char command[20];
-    char command1[20];
+    bool running = true;
     
-    while (true) {
-        cout << "Enter command : ";
+    
+    while (running) {
+  
+        cout << "Enter command: ";
         cin >> command;
+      
 
         if (strcmp(command, "ADD") == 0) {
             addStudent(list1);
-	    // addStudent(list1);
+	    
 	}
-
-	cout << "Enter command: ";
-	cin >> command1;
-	
-	if(strcmp(command1, "PRINT") == 0) {
+	else if(strcmp(command, "PRINT") == 0) {
 	  printStudent(list1);
 	}
 
-	
-
-	
-
-	//	for(Student* person :  list1) {
-	//	  cout << person->firstname << ", " << person->studentid << ", " << person->gpa << "\n";
+	else if (strcmp(command, "QUIT") == 0) {
+            running = false;
+        }
+	else {
+            cout << "Unknown command." << endl;
+        }
              
-	break;
+
     }
     
 	   
