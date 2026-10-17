@@ -1,4 +1,8 @@
-#include <iostream>
+//Studentlist - Daivik yenduri
+// commands(PRINT, DELETE, QUIT, ADD)
+
+
+#include <iostream> 
 #include <vector>
 #include <cstring>
 #include <iomanip>
@@ -8,7 +12,7 @@ struct Student {
     char firstname[50];
     char lastname[50];
     int studentid;
-    double gpa;
+    float gpa;
 };
 
 void addStudent(vector<Student*>& list){
@@ -27,20 +31,23 @@ void addStudent(vector<Student*>& list){
 }
    void printStudent(vector<Student*>& list){
      for(Student* person : list ) {
-    cout << person->firstname << ", " << person->studentid << ", " << person->gpa << "\n";
+       cout << person->firstname << ", " << person->lastname << ", "<< person->studentid;
+       cout << fixed << setprecision(2) << ", " << person->gpa << endl;
      }
     }
 
 
 void deleteStudent(vector<Student*>& list) {
-    double id;
+    int id;
     cout << "Enter student id to delete: ";
     cin >> id;
 
     for (int i = 0; i < list.size(); i++) {
         if (list[i]->studentid == id) {
-            delete list[i];    
-
+	  delete list[i]; //deleted memory at that address  
+	  list.erase(list.begin()+i);//deletes address inside vector
+	  cout << "Deleted" << endl;
+	  return;
       }
     }
 }
@@ -68,6 +75,12 @@ int main() {
 	else if (strcmp(command, "QUIT") == 0) {
             running = false;
         }
+
+        else if (strcmp(command, "DELETE") == 0) {
+	     deleteStudent(list1);
+        }
+
+
 	else {
             cout << "Unknown command." << endl;
         }
